@@ -1,0 +1,1524 @@
+{
+  "version": "1.0",
+  "source": "《正大杯市场调查模型方法学习手册》35 个模型（按难度分级）",
+  "models": [
+    {
+      "id": "descriptive",
+      "name": "描述性统计",
+      "en": "Descriptive Statistics",
+      "level": "基础",
+      "chapter": 1,
+      "category": "描述统计",
+      "purposes": [
+        "descriptive",
+        "sample_profile"
+      ],
+      "question_types": [
+        "现状描述",
+        "样本结构",
+        "基本特征",
+        "水平分布"
+      ],
+      "dep_type": [
+        "continuous",
+        "ordinal",
+        "categorical",
+        "none"
+      ],
+      "indep_type": [],
+      "min_sample": 30,
+      "assumptions": [
+        "样本对总体具有代表性",
+        "变量定义与编码口径一致",
+        "缺失值处理规则明确"
+      ],
+      "inputs": "单变量或多变量的分类、有序或连续数据",
+      "outputs": "均值、标准差、中位数、频数、百分比、分布图",
+      "report": "连续变量同时报告 N、均值、标准差；分类变量报告频数与有效百分比；说明缺失值",
+      "pitfalls": "只报均值不报离散程度；百分比基数不清；缺失值未说明；把描述结果当作推断结论",
+      "software": [
+        "Excel",
+        "SPSS",
+        "Python"
+      ],
+      "formula": "x̄ = Σx/n；s = √[Σ(x−x̄)²/(n−1)]；p_k = n_k/n",
+      "undergrad_fit": 5,
+      "tags": [
+        "必备"
+      ],
+      "fallback": ""
+    },
+    {
+      "id": "likert",
+      "name": "李克特量表",
+      "en": "Likert Scale",
+      "level": "基础",
+      "chapter": 1,
+      "category": "测量工具",
+      "purposes": [
+        "measurement",
+        "latent"
+      ],
+      "question_types": [
+        "态度测量",
+        "意愿测量",
+        "感知测量",
+        "满意度测量"
+      ],
+      "dep_type": [
+        "ordinal"
+      ],
+      "indep_type": [],
+      "min_sample": 30,
+      "assumptions": [
+        "同一维度题项同向",
+        "多题项共同测量同一构念",
+        "反向题已完成转换"
+      ],
+      "inputs": "5 级或 7 级李克特题项，同一构念通常 3—5 题",
+      "outputs": "维度得分（题项均值或加权均值）",
+      "report": "说明量表级数、计分方向、反向题处理方式、维度合成规则",
+      "pitfalls": "反向题未转换；用单题代表整个构念；不同题项级数混用；缺失值直接按 0 处理",
+      "software": [
+        "SPSS",
+        "Excel",
+        "Python"
+      ],
+      "formula": "S = (1/k)Σx_t；反向题 x' = (L+1) − x",
+      "undergrad_fit": 5,
+      "tags": [
+        "必备"
+      ],
+      "fallback": ""
+    },
+    {
+      "id": "cronbach",
+      "name": "信度检验：Cronbach's α",
+      "en": "Cronbach's Alpha",
+      "level": "基础",
+      "chapter": 1,
+      "category": "信度检验",
+      "purposes": [
+        "reliability"
+      ],
+      "question_types": [
+        "量表信度",
+        "内部一致性",
+        "题项质量"
+      ],
+      "dep_type": [
+        "ordinal"
+      ],
+      "indep_type": [],
+      "min_sample": 30,
+      "assumptions": [
+        "同一维度至少 3 个题项",
+        "题项间存在正向相关",
+        "样本来自目标总体"
+      ],
+      "inputs": "同一维度的多题项数据",
+      "outputs": "Cronbach's α、校正后项—总计相关、删除题项后的 α",
+      "report": "分维度报告 α；α<0.6 需修订，0.7—0.9 通常可接受，>0.95 检查题项是否语义重复",
+      "pitfalls": "题项过少导致 α 天然偏低；跨维度合并计算；仅凭 α 删题；把信度当效度",
+      "software": [
+        "SPSS",
+        "Python",
+        "R"
+      ],
+      "formula": "α = [k/(k−1)]·[1 − Σs_i²/s_T²]",
+      "undergrad_fit": 5,
+      "tags": [
+        "必备"
+      ],
+      "fallback": "题间相关"
+    },
+    {
+      "id": "baidu_index",
+      "name": "百度指数分析",
+      "en": "Baidu Index Analysis",
+      "level": "基础",
+      "chapter": 1,
+      "category": "二手数据",
+      "purposes": [
+        "secondary",
+        "trend",
+        "attention"
+      ],
+      "question_types": [
+        "网络关注度",
+        "区域市场潜力",
+        "趋势判断"
+      ],
+      "dep_type": [
+        "none"
+      ],
+      "indep_type": [],
+      "min_sample": null,
+      "assumptions": [
+        "关键词具有足够搜索量",
+        "网民关注度可近似反映市场关注",
+        "时间区间与地域口径一致"
+      ],
+      "inputs": "关键词、时间区间、地域范围",
+      "outputs": "指数趋势、需求图谱、地域分布、人群画像",
+      "report": "注明指数为相对值、关键词选择依据、时间与地域范围；不可表述为绝对人数",
+      "pitfalls": "小众品牌词无数据；把关注度直接当购买行为；忽略网民样本对全人群的代表性偏差",
+      "software": [
+        "百度指数",
+        "Excel"
+      ],
+      "formula": "I_t = 100·Q_t/Q_ref",
+      "undergrad_fit": 5,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "巨量算数、微信指数"
+    },
+    {
+      "id": "word_frequency",
+      "name": "词频分析与词云",
+      "en": "Word Frequency Analysis and Word Cloud",
+      "level": "基础",
+      "chapter": 1,
+      "category": "文本分析",
+      "purposes": [
+        "text",
+        "exploratory"
+      ],
+      "question_types": [
+        "文本主题初筛",
+        "评论分析",
+        "舆情概览"
+      ],
+      "dep_type": [
+        "text"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "语料与研究对象相关",
+        "分词与停用词处理合理",
+        "已去重、去广告、去无效文本"
+      ],
+      "inputs": "评论文本、开放题文本或公开语料",
+      "outputs": "高频词表、词云、词频分布",
+      "report": "说明语料来源、时间范围、清洗规则、分词工具与停用词表",
+      "pitfalls": "只凭高频词下结论；中文分词错误；未处理广告与重复文本；把词频当情感极性",
+      "software": [
+        "Python(jieba)",
+        "NVivo",
+        "ROST CM6"
+      ],
+      "formula": "f_w = c_w/N",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "TF-IDF"
+    },
+    {
+      "id": "aisas",
+      "name": "AISAS 消费者行为分析模型",
+      "en": "AISAS Model",
+      "level": "基础",
+      "chapter": 1,
+      "category": "行为框架",
+      "purposes": [
+        "framework",
+        "consumer_journey"
+      ],
+      "question_types": [
+        "购买链路",
+        "转化诊断",
+        "消费者行为"
+      ],
+      "dep_type": [
+        "categorical"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "问卷能够识别各阶段人群",
+        "阶段划分互斥且可操作化",
+        "样本为目标消费者"
+      ],
+      "inputs": "注意、兴趣、搜索、行动、分享五个阶段的题项",
+      "outputs": "各阶段人数、相邻阶段转化率、全链路转化率",
+      "report": "报告各阶段人数、转化率，并指出转化率最低的薄弱环节",
+      "pitfalls": "阶段定义含糊；样本非目标消费者；把分析框架当作统计检验；阶段之间存在交叉",
+      "software": [
+        "Excel",
+        "SPSS"
+      ],
+      "formula": "CR(i) = N(i+1)/N(i)；CR(total) = N(Share)/N(Attention)",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "描述统计 + 交叉分析"
+    },
+    {
+      "id": "sheth_newman_gross",
+      "name": "Sheth-Newman-Gross 消费价值模型",
+      "en": "Consumption Values Theory",
+      "level": "基础",
+      "chapter": 1,
+      "category": "理论框架",
+      "purposes": [
+        "framework",
+        "value"
+      ],
+      "question_types": [
+        "消费动机",
+        "价值结构",
+        "购买原因"
+      ],
+      "dep_type": [
+        "ordinal"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "五类价值维度可操作化",
+        "量表信度可接受",
+        "价值维度与品类相关"
+      ],
+      "inputs": "功能、社会、情感、认知、条件五类价值量表",
+      "outputs": "五类价值维度得分与排序",
+      "report": "报告各维度均值、排序、题项数与信度；说明维度来源",
+      "pitfalls": "维度题项不足；把得分排序当因果；跨品类直接套用；忽略条件价值的场景性",
+      "software": [
+        "SPSS",
+        "Excel"
+      ],
+      "formula": "CV = Σw_jV_j（j=1,…,5）",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "描述统计 + 回归"
+    },
+    {
+      "id": "pest",
+      "name": "PEST 分析",
+      "en": "PEST Analysis",
+      "level": "基础",
+      "chapter": 1,
+      "category": "定性框架",
+      "purposes": [
+        "framework",
+        "macro"
+      ],
+      "question_types": [
+        "宏观环境",
+        "行业背景",
+        "可行性论证"
+      ],
+      "dep_type": [
+        "none"
+      ],
+      "indep_type": [],
+      "min_sample": null,
+      "assumptions": [
+        "每条判断有可查证来源",
+        "资料来源权威且时效性可接受"
+      ],
+      "inputs": "政策文件、经济统计、社会文化资料、技术资料",
+      "outputs": "政治、经济、社会、技术四维环境判断",
+      "report": "逐条标注政策名称、年份、数据来源；区分事实与判断",
+      "pitfalls": "空泛表述；无来源；把定性判断写成统计结论；资料过时",
+      "software": [
+        "公开资料",
+        "Excel"
+      ],
+      "formula": "定性框架，无统一数学公式",
+      "undergrad_fit": 5,
+      "tags": [
+        "可选"
+      ],
+      "fallback": ""
+    },
+    {
+      "id": "swot",
+      "name": "SWOT 分析",
+      "en": "SWOT Analysis",
+      "level": "基础",
+      "chapter": 1,
+      "category": "定性框架",
+      "purposes": [
+        "framework",
+        "strategy"
+      ],
+      "question_types": [
+        "战略分析",
+        "策略建议",
+        "内外部环境"
+      ],
+      "dep_type": [
+        "none"
+      ],
+      "indep_type": [],
+      "min_sample": null,
+      "assumptions": [
+        "内部条目基于调研数据",
+        "外部条目基于行业事实",
+        "必须完成 SO/ST/WO/WT 交叉"
+      ],
+      "inputs": "研究结论、行业事实、竞争信息",
+      "outputs": "SO、ST、WO、WT 四类交叉策略",
+      "report": "说明每条依据；给出四类交叉策略而非仅罗列四项",
+      "pitfalls": "只列 S/W/O/T 不交叉；条目主观；与调研结论脱节",
+      "software": [
+        "Excel"
+      ],
+      "formula": "SO=S×O；ST=S×T；WO=W×O；WT=W×T",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "PEST + 4P"
+    },
+    {
+      "id": "stp",
+      "name": "STP 分析",
+      "en": "Segmentation-Targeting-Positioning",
+      "level": "基础",
+      "chapter": 1,
+      "category": "策略框架",
+      "purposes": [
+        "framework",
+        "segmentation",
+        "strategy"
+      ],
+      "question_types": [
+        "市场细分",
+        "目标市场",
+        "品牌定位"
+      ],
+      "dep_type": [
+        "categorical",
+        "continuous"
+      ],
+      "indep_type": [],
+      "min_sample": 200,
+      "assumptions": [
+        "细分变量具有区分度",
+        "目标市场可服务、可衡量",
+        "定位可通过差异—相关—可守检验"
+      ],
+      "inputs": "聚类或细分结果、市场规模、竞争格局",
+      "outputs": "细分市场、目标人群选择、定位陈述",
+      "report": "说明细分依据、目标选择理由、定位差异点与目标人群规模",
+      "pitfalls": "细分后不取舍；定位空泛；忽略可服务性；目标市场无规模数据",
+      "software": [
+        "Excel",
+        "SPSS",
+        "Python"
+      ],
+      "formula": "T_i=Σw_j·a_ij；定位距离 d(p,q)=√Σ(p_k−q_k)²",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "聚类 + 交叉分析"
+    },
+    {
+      "id": "four_p",
+      "name": "4P 营销组合",
+      "en": "4P Marketing Mix",
+      "level": "基础",
+      "chapter": 1,
+      "category": "策略框架",
+      "purposes": [
+        "framework",
+        "strategy"
+      ],
+      "question_types": [
+        "营销组合",
+        "策略建议",
+        "落地建议"
+      ],
+      "dep_type": [
+        "none"
+      ],
+      "indep_type": [],
+      "min_sample": null,
+      "assumptions": [
+        "建议有数据来源",
+        "产品、价格、渠道、促销指向同一定位"
+      ],
+      "inputs": "前序分析结论、定位陈述",
+      "outputs": "产品、价格、渠道、促销四类建议",
+      "report": "每条建议标注数据依据；价格给区间；渠道按人群区分；传播对接受访者关注点",
+      "pitfalls": "建议与数据脱节；四要素互相矛盾；表述空泛不可执行",
+      "software": [
+        "Excel"
+      ],
+      "formula": "MM=(Product, Price, Place, Promotion)，共同指向定位 P",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "STP"
+    },
+    {
+      "id": "sample_size",
+      "name": "简单随机抽样与样本量测算",
+      "en": "Simple Random Sampling & Sample Size",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "抽样设计",
+      "purposes": [
+        "sampling",
+        "design"
+      ],
+      "question_types": [
+        "样本量",
+        "抽样设计",
+        "样本代表性"
+      ],
+      "dep_type": [
+        "none"
+      ],
+      "indep_type": [],
+      "min_sample": null,
+      "assumptions": [
+        "参数取值可溯源",
+        "设计效应有依据",
+        "有效率有预调研或经验支持"
+      ],
+      "inputs": "置信水平、允许误差、预估比例、总体规模、设计效应、预计有效率",
+      "outputs": "基础样本量、修正样本量、所需有效样本、计划发放量",
+      "report": "完整列出四项参数及取值理由；说明是否作有限总体修正；区分发放量与有效样本",
+      "pitfalls": "直接套用 384；忽略设计效应；把发放量当有效样本；参数无来源",
+      "software": [
+        "Excel",
+        "Python",
+        "R"
+      ],
+      "formula": "n0=t²P(1−P)/d²；n=n0·deff/r；有限总体 n0'=n0/[1+(n0−1)/N]",
+      "undergrad_fit": 5,
+      "tags": [
+        "必备"
+      ],
+      "fallback": ""
+    },
+    {
+      "id": "chi_square",
+      "name": "卡方检验",
+      "en": "Chi-square Test",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "假设检验",
+      "purposes": [
+        "association",
+        "group_difference"
+      ],
+      "question_types": [
+        "分类变量关联",
+        "样本代表性",
+        "频数比较"
+      ],
+      "dep_type": [
+        "categorical"
+      ],
+      "indep_type": [
+        "categorical"
+      ],
+      "min_sample": 100,
+      "assumptions": [
+        "观测相互独立",
+        "各格期望频数不小于 5",
+        "分类互斥且穷尽"
+      ],
+      "inputs": "两个分类变量或一个频数分布",
+      "outputs": "χ²、df、p、列联表、期望频数",
+      "report": "报告 χ²、df、p、N；期望频数不足时说明合并类别或改用 Fisher 精确检验",
+      "pitfalls": "期望频数<5 仍用卡方；把相关当因果；多重比较未校正；分类口径不一致",
+      "software": [
+        "SPSS",
+        "Python",
+        "R"
+      ],
+      "formula": "χ²=Σ(O−E)²/E；df=(r−1)(c−1)",
+      "undergrad_fit": 5,
+      "tags": [
+        "必备"
+      ],
+      "fallback": "Fisher 精确检验"
+    },
+    {
+      "id": "crosstab",
+      "name": "交叉分析（列联表与多重响应）",
+      "en": "Cross-tabulation Analysis",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "描述与检验",
+      "purposes": [
+        "association",
+        "descriptive"
+      ],
+      "question_types": [
+        "群体分布差异",
+        "分类变量关系",
+        "多选题分析"
+      ],
+      "dep_type": [
+        "categorical"
+      ],
+      "indep_type": [
+        "categorical"
+      ],
+      "min_sample": 100,
+      "assumptions": [
+        "分类变量编码清晰",
+        "多选题按多重响应集处理",
+        "行列维度不宜超过 5×5"
+      ],
+      "inputs": "两个分类变量、多选题或多重响应集",
+      "outputs": "列联表、行/列百分比、卡方检验",
+      "report": "说明百分比方向（行百分比或列百分比）；多选题同时报告响应百分比与个案百分比",
+      "pitfalls": "多选题按单选计算；百分比基数错误；表格过大难以解读；未说明缺失类别",
+      "software": [
+        "SPSS",
+        "Excel",
+        "Python"
+      ],
+      "formula": "p_ij=n_ij/n_i·；E_ij=n_i··n_·j/n",
+      "undergrad_fit": 5,
+      "tags": [
+        "必备"
+      ],
+      "fallback": "卡方检验"
+    },
+    {
+      "id": "anova",
+      "name": "方差分析（ANOVA）",
+      "en": "Analysis of Variance",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "假设检验",
+      "purposes": [
+        "group_difference"
+      ],
+      "question_types": [
+        "多组均值差异",
+        "群体比较",
+        "组间差异"
+      ],
+      "dep_type": [
+        "continuous"
+      ],
+      "indep_type": [
+        "categorical"
+      ],
+      "min_sample": 100,
+      "assumptions": [
+        "观测独立",
+        "残差近似正态",
+        "方差齐性（Levene 检验 p>0.05）"
+      ],
+      "inputs": "一个分类自变量与一个连续因变量",
+      "outputs": "F 值、df、p 值、事后多重比较、效应量",
+      "report": "报告 F、df、p、效应量；显著后做事后比较并说明方法；方差不齐改用 Welch ANOVA",
+      "pitfalls": "方差不齐仍用 ANOVA；未校正多重比较；把组间差异直接解释为因果；因变量为二分类仍用 ANOVA",
+      "software": [
+        "SPSS",
+        "Python",
+        "R"
+      ],
+      "formula": "SST=SSB+SSW；F=[SSB/(k−1)]/[SSW/(N−k)]",
+      "undergrad_fit": 5,
+      "tags": [
+        "必备"
+      ],
+      "fallback": "Welch ANOVA / Kruskal-Wallis"
+    },
+    {
+      "id": "kmo_bartlett",
+      "name": "效度检验：KMO 与巴特利特检验",
+      "en": "Validity: KMO & Bartlett Test",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "效度检验",
+      "purposes": [
+        "validity",
+        "factor_prep"
+      ],
+      "question_types": [
+        "效度检验",
+        "因子分析适用性",
+        "量表结构"
+      ],
+      "dep_type": [
+        "ordinal",
+        "continuous"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "多题项间存在相关",
+        "样本量宜为题项数的 5—10 倍",
+        "题项数不少于 5"
+      ],
+      "inputs": "量表题项的相关矩阵",
+      "outputs": "KMO 值、Bartlett 球形检验 χ²、df、p",
+      "report": "一般以 KMO>0.7、Bartlett p<0.05 为通过；同时报告全部指标",
+      "pitfalls": "题项过少导致 KMO 偏低；样本不足；只报 KMO 不报 Bartlett；通过检验后仍不报告载荷",
+      "software": [
+        "SPSS",
+        "Python",
+        "R"
+      ],
+      "formula": "KMO=ΣΣr²/(ΣΣr²+ΣΣq²)；Bartlett χ²=−[(N−1)−(2p+5)/6]·ln|R|",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "项目分析"
+    },
+    {
+      "id": "cluster",
+      "name": "聚类分析（K-Means / K-Modes）",
+      "en": "Cluster Analysis",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "分群",
+      "purposes": [
+        "segmentation"
+      ],
+      "question_types": [
+        "人群分群",
+        "消费者画像",
+        "市场细分"
+      ],
+      "dep_type": [
+        "none"
+      ],
+      "indep_type": [
+        "continuous",
+        "categorical"
+      ],
+      "min_sample": 200,
+      "assumptions": [
+        "特征变量已标准化",
+        "K 值确定有依据",
+        "分群后群间差异可验证"
+      ],
+      "inputs": "连续或分类特征矩阵",
+      "outputs": "类别归属、类中心、轮廓系数、群规模",
+      "report": "说明 K 值确定依据（肘部法则/轮廓系数/业务需要）；分群后用 ANOVA 或交叉分析验证差异",
+      "pitfalls": "K 值随意；未标准化；把聚类结果当客观真理；群规模过小；未验证群间差异",
+      "software": [
+        "SPSS",
+        "Python",
+        "R"
+      ],
+      "formula": "J=Σ_kΣ_{x∈C_k}||x−μ_k||²；s(i)=[b(i)−a(i)]/max{a(i),b(i)}",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "K-Modes / 层次聚类"
+    },
+    {
+      "id": "linear_regression",
+      "name": "多元线性回归",
+      "en": "Multiple Linear Regression",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "回归建模",
+      "purposes": [
+        "driver",
+        "prediction"
+      ],
+      "question_types": [
+        "影响因素",
+        "连续因变量",
+        "解释力分析"
+      ],
+      "dep_type": [
+        "continuous"
+      ],
+      "indep_type": [
+        "continuous",
+        "categorical",
+        "ordinal"
+      ],
+      "min_sample": 100,
+      "assumptions": [
+        "线性关系",
+        "误差独立",
+        "同方差",
+        "残差近似正态",
+        "无严重共线性（VIF<5）"
+      ],
+      "inputs": "连续因变量与多个自变量",
+      "outputs": "β、标准误、t、p、R²、调整 R²、F、VIF",
+      "report": "报告调整 R²、F、标准化 β、p、VIF；说明变量进入方式与虚拟变量设置",
+      "pitfalls": "共线性未检验；样本量不足；分类变量未设虚拟变量；把相关当因果；异常值未处理",
+      "software": [
+        "SPSS",
+        "Python",
+        "R",
+        "Stata"
+      ],
+      "formula": "y=β0+Σβ_jx_j+ε；VIF_j=1/(1−R_j²)",
+      "undergrad_fit": 5,
+      "tags": [
+        "必备"
+      ],
+      "fallback": "稳健标准误 / 变量变换 / 分样本回归"
+    },
+    {
+      "id": "logistic_regression",
+      "name": "二元 Logistic 回归",
+      "en": "Binary Logistic Regression",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "回归建模",
+      "purposes": [
+        "driver",
+        "binary_outcome",
+        "prediction"
+      ],
+      "question_types": [
+        "二分类结果",
+        "购买意愿",
+        "是否选择",
+        "发生概率"
+      ],
+      "dep_type": [
+        "binary"
+      ],
+      "indep_type": [
+        "continuous",
+        "categorical",
+        "ordinal"
+      ],
+      "min_sample": 100,
+      "assumptions": [
+        "因变量为二分类",
+        "观测独立",
+        "无完全分离",
+        "每个自变量对应足够事件数"
+      ],
+      "inputs": "0/1 因变量与多个自变量",
+      "outputs": "B、SE、Wald、p、Exp(B)、Hosmer-Lemeshow、分类正确率",
+      "report": "明示参照组；报告 Exp(B) 及 95% 置信区间；报告拟合优度与分类正确率",
+      "pitfalls": "参照组不清；事件数不足；完全分离；把 OR 当风险比；未处理类别稀疏",
+      "software": [
+        "SPSS",
+        "Python",
+        "R",
+        "Stata"
+      ],
+      "formula": "ln[p/(1−p)]=β0+Σβ_jx_j；OR_j=exp(β_j)",
+      "undergrad_fit": 4,
+      "tags": [
+        "必备"
+      ],
+      "fallback": "惩罚似然 / 精确 Logistic；大样本可补充随机森林"
+    },
+    {
+      "id": "servperf",
+      "name": "SERVPERF 服务质量模型",
+      "en": "SERVPERF Service Quality Model",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "服务评价",
+      "purposes": [
+        "evaluation",
+        "service_quality"
+      ],
+      "question_types": [
+        "服务质量",
+        "满意度",
+        "体验评价"
+      ],
+      "dep_type": [
+        "ordinal"
+      ],
+      "indep_type": [],
+      "min_sample": 200,
+      "assumptions": [
+        "五维度量表改编自成熟量表",
+        "维度信度可接受",
+        "题项与行业情境匹配"
+      ],
+      "inputs": "有形性、可靠性、响应性、保证性、移情性五维度量表",
+      "outputs": "五维度得分、总体服务质量得分",
+      "report": "报告各维度均值、标准差、α、样本量；说明量表来源与改编过程",
+      "pitfalls": "直接套用未改编；维度题项不足；混淆 SERVPERF 与 SERVQUAL 的差值结构",
+      "software": [
+        "SPSS",
+        "Excel",
+        "Python"
+      ],
+      "formula": "SQ=(1/m)ΣSQ_j（m=5）",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "IPA / 描述统计"
+    },
+    {
+      "id": "ipa",
+      "name": "IPA 重要性—表现分析",
+      "en": "Importance-Performance Analysis",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "评价与优先级",
+      "purposes": [
+        "priority",
+        "evaluation"
+      ],
+      "question_types": [
+        "改进优先级",
+        "重要度—满意度",
+        "资源配置"
+      ],
+      "dep_type": [
+        "continuous",
+        "ordinal"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "同时测量重要度与满意度",
+        "分割线规则明确",
+        "指标数量适中"
+      ],
+      "inputs": "各指标的重要度与满意度评分",
+      "outputs": "四象限落位图、改进优先顺序",
+      "report": "说明重要度来源（消费者评分或专家赋权）、分割线取法（均值/中位数/中点）、指标数量",
+      "pitfalls": "只测满意度；分割线随意；指标过多未分维度；重要度与满意度题项口径不一致",
+      "software": [
+        "Excel",
+        "SPSS",
+        "Python"
+      ],
+      "formula": "改进区 I_i>mean(I) 且 P_i<mean(P)；优势区 I_i>mean(I) 且 P_i>mean(P)",
+      "undergrad_fit": 4,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "描述统计 + 优先级排序"
+    },
+    {
+      "id": "web_crawler",
+      "name": "Python 网络爬虫",
+      "en": "Web Crawling",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "数据获取",
+      "purposes": [
+        "text",
+        "data_collection"
+      ],
+      "question_types": [
+        "评论文本",
+        "舆情数据",
+        "二手文本"
+      ],
+      "dep_type": [
+        "text"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "遵守 robots.txt 与平台协议",
+        "不抓取个人信息",
+        "控制请求频率",
+        "抓取后去重去噪"
+      ],
+      "inputs": "公开页面、公开评论、社区帖子",
+      "outputs": "结构化语料（评论、时间、评分、来源等字段）",
+      "report": "说明抓取来源、时间、字段、抓取量、清洗量与有效率",
+      "pitfalls": "违规抓取；反爬导致样本偏差；未去重去广告；抓取字段含个人信息",
+      "software": [
+        "Python(requests/Selenium)"
+      ],
+      "formula": "η=N_valid/N_crawled",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "官方 API / 公开数据集"
+    },
+    {
+      "id": "snownlp",
+      "name": "SnowNLP 情感分析",
+      "en": "Sentiment Analysis with SnowNLP",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "文本分析",
+      "purposes": [
+        "text",
+        "sentiment"
+      ],
+      "question_types": [
+        "情感倾向",
+        "评论正负面",
+        "舆情态度"
+      ],
+      "dep_type": [
+        "text"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "语料为中文",
+        "需人工抽样复核",
+        "阈值设定合理"
+      ],
+      "inputs": "中文文本语料",
+      "outputs": "0—1 情感得分、正面/中性/负面比例",
+      "report": "说明分界阈值、人工复核样本量与一致率；不可据单条结果下结论",
+      "pitfalls": "反讽、方言、双重否定误判；未人工复核；把情感得分当购买意愿",
+      "software": [
+        "Python(SnowNLP)"
+      ],
+      "formula": "score(d)∈[0,1]；>0.6 正面，<0.4 负面，其余中性",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "人工编码 / 大模型标注"
+    },
+    {
+      "id": "tfidf",
+      "name": "TF-IDF",
+      "en": "Term Frequency-Inverse Document Frequency",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "文本分析",
+      "purposes": [
+        "text",
+        "keyword"
+      ],
+      "question_types": [
+        "关键词提取",
+        "品牌差异",
+        "文本对比"
+      ],
+      "dep_type": [
+        "text"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "已完成中文分词与去停用词",
+        "比较组样本量大致相当",
+        "结果仅表征区分度"
+      ],
+      "inputs": "多文档或多品牌文本语料",
+      "outputs": "词—权重矩阵、各文档特征词",
+      "report": "说明分词工具、停用词表、比较组构成；与情感标签交叉解读",
+      "pitfalls": "未分词；样本量悬殊；把区分度当情感极性；停用词表不适配行业",
+      "software": [
+        "Python(scikit-learn/jieba)"
+      ],
+      "formula": "tf-idf(t,d)=tf(t,d)·log[N/df(t)]",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "词频分析"
+    },
+    {
+      "id": "association_rules",
+      "name": "关联规则分析",
+      "en": "Association Rule Mining",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "关联挖掘",
+      "purposes": [
+        "association",
+        "recommendation"
+      ],
+      "question_types": [
+        "多选题共现",
+        "产品组合",
+        "关联购买"
+      ],
+      "dep_type": [
+        "binary"
+      ],
+      "indep_type": [
+        "binary"
+      ],
+      "min_sample": 200,
+      "assumptions": [
+        "数据可转为 0/1 矩阵",
+        "项集数量适中",
+        "提升度大于 1 方为正向关联"
+      ],
+      "inputs": "多选题、购物篮或浏览记录的 0/1 矩阵",
+      "outputs": "支持度、置信度、提升度、频繁项集",
+      "report": "同时报告支持度、置信度、提升度；说明最小阈值与项集范围",
+      "pitfalls": "只看置信度；高频项误导；样本不足；把共现当因果",
+      "software": [
+        "Python(mlxtend)",
+        "R(arules)",
+        "SPSS Modeler"
+      ],
+      "formula": "supp(X→Y)=N(X∪Y)/N；conf=N(X∪Y)/N(X)；lift=conf/supp(Y)",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "交叉分析"
+    },
+    {
+      "id": "random_forest",
+      "name": "随机森林与特征重要性",
+      "en": "Random Forest & Feature Importance",
+      "level": "进阶",
+      "chapter": 2,
+      "category": "机器学习",
+      "purposes": [
+        "prediction",
+        "feature_importance"
+      ],
+      "question_types": [
+        "预测",
+        "特征重要性",
+        "非线性关系"
+      ],
+      "dep_type": [
+        "binary",
+        "continuous",
+        "multiclass"
+      ],
+      "indep_type": [
+        "continuous",
+        "categorical"
+      ],
+      "min_sample": 300,
+      "assumptions": [
+        "训练集与测试集划分",
+        "特征矩阵完整",
+        "随机种子固定",
+        "避免数据泄漏"
+      ],
+      "inputs": "特征矩阵与标签",
+      "outputs": "特征重要性排序、准确率、AUC、混淆矩阵",
+      "report": "报告训练/测试划分比例、准确率或 AUC、特征重要性排序；说明调参过程",
+      "pitfalls": "过拟合；MDI 偏好高基数变量；未划分测试集；把特征重要性当因果",
+      "software": [
+        "Python(scikit-learn)",
+        "R(randomForest)"
+      ],
+      "formula": "分类 F(x)=argmax_c ΣI[h_m(x)=c]；MDI(j)=(1/M)ΣΣΔI(j,t)",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "LightGBM / 回归"
+    },
+    {
+      "id": "multistage_pps",
+      "name": "多阶段抽样与 PPS 抽样",
+      "en": "Multistage Sampling & PPS",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "抽样设计",
+      "purposes": [
+        "sampling",
+        "design"
+      ],
+      "question_types": [
+        "大总体抽样",
+        "多阶段抽样",
+        "PPS 抽样"
+      ],
+      "dep_type": [
+        "none"
+      ],
+      "indep_type": [],
+      "min_sample": null,
+      "assumptions": [
+        "各级单位规模数据可得",
+        "阶段数控制在 2—3 个",
+        "设计效应估算合理",
+        "末阶段抽样方式如实标注"
+      ],
+      "inputs": "各级单位人口或规模统计资料",
+      "outputs": "入选概率、设计效应、所需样本量、各阶段抽样方案",
+      "report": "说明阶段划分、PPS 规模依据、deff 分解与有效率；拦截访问须标注为方便抽样",
+      "pitfalls": "阶段过多导致 deff 过高；把拦截访问当概率抽样；忽略群内相关；规模数据过时",
+      "software": [
+        "Excel",
+        "R",
+        "Python"
+      ],
+      "formula": "deff=deff1·deff2·deff3；deff2=1+(m−1)ρ；n=n0·deff/r；π_i=n·M_i/M",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "分层随机抽样"
+    },
+    {
+      "id": "pca_factor",
+      "name": "主成分分析与因子分析",
+      "en": "PCA & Factor Analysis",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "降维与结构",
+      "purposes": [
+        "dimension_reduction",
+        "validity",
+        "latent"
+      ],
+      "question_types": [
+        "降维",
+        "量表结构验证",
+        "维度提取"
+      ],
+      "dep_type": [
+        "ordinal",
+        "continuous"
+      ],
+      "indep_type": [],
+      "min_sample": 200,
+      "assumptions": [
+        "KMO>0.7",
+        "Bartlett p<0.05",
+        "样本量为题项数的 5—10 倍"
+      ],
+      "inputs": "多题项相关矩阵",
+      "outputs": "因子数、累计方差解释率、旋转后载荷矩阵",
+      "report": "报告 KMO、Bartlett、累计解释率（一般>60%）、旋转后载荷（>0.5 视为归属）",
+      "pitfalls": "未做适用性检验；因子数随意；载荷过低仍保留；探索性结果与理论维度不一致却不说明",
+      "software": [
+        "SPSS",
+        "Python",
+        "R"
+      ],
+      "formula": "Y_k=a_k1X_1+…+a_kpX_p；X=ΛF+ε",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "PCA / 项目分析"
+    },
+    {
+      "id": "ahp",
+      "name": "层次分析法 AHP",
+      "en": "Analytic Hierarchy Process",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "赋权与评价",
+      "purposes": [
+        "weighting",
+        "evaluation"
+      ],
+      "question_types": [
+        "指标赋权",
+        "评价体系",
+        "专家判断"
+      ],
+      "dep_type": [
+        "none"
+      ],
+      "indep_type": [],
+      "min_sample": null,
+      "assumptions": [
+        "判断矩阵通过一致性检验（CR<0.1）",
+        "专家构成合理",
+        "同层指标≤9 个"
+      ],
+      "inputs": "专家两两比较判断矩阵",
+      "outputs": "权重向量、λmax、CI、CR",
+      "report": "报告判断矩阵、权重向量、CR 值、专家构成；CR<0.1 方可通过",
+      "pitfalls": "CR 超标仍用；专家数量不足；指标过多导致判断困难；把主观权重当客观事实",
+      "software": [
+        "Excel",
+        "Python",
+        "yaahp"
+      ],
+      "formula": "A·w=λmax·w；CI=(λmax−n)/(n−1)；CR=CI/RI",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "熵权法 / 因子权重"
+    },
+    {
+      "id": "fuzzy_evaluation",
+      "name": "模糊综合评价",
+      "en": "Fuzzy Comprehensive Evaluation",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "综合评价",
+      "purposes": [
+        "evaluation",
+        "weighting"
+      ],
+      "question_types": [
+        "综合评价",
+        "等级评价",
+        "满意度分级"
+      ],
+      "dep_type": [
+        "ordinal"
+      ],
+      "indep_type": [],
+      "min_sample": 100,
+      "assumptions": [
+        "权重来源明确",
+        "隶属度矩阵构造合理",
+        "等级赋值规则明确"
+      ],
+      "inputs": "权重向量与隶属度矩阵",
+      "outputs": "综合得分、评价等级",
+      "report": "说明权重来源（AHP/因子贡献率）、等级赋值规则、合成算子与判定区间",
+      "pitfalls": "权重主观；赋值规则不说明；等级区间随意；计算过程不可复现",
+      "software": [
+        "Excel",
+        "Python",
+        "MATLAB"
+      ],
+      "formula": "B=W×R；S=B·V",
+      "undergrad_fit": 3,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "加权平均 / TOPSIS"
+    },
+    {
+      "id": "sem",
+      "name": "结构方程模型 SEM",
+      "en": "Structural Equation Modeling",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "潜变量建模",
+      "purposes": [
+        "latent",
+        "mediation",
+        "path"
+      ],
+      "question_types": [
+        "中介效应",
+        "路径关系",
+        "潜变量模型"
+      ],
+      "dep_type": [
+        "latent",
+        "continuous"
+      ],
+      "indep_type": [
+        "latent",
+        "continuous"
+      ],
+      "min_sample": 200,
+      "assumptions": [
+        "理论模型有依据",
+        "样本量≥200",
+        "测量模型信效度合格",
+        "模型拟合可接受",
+        "每个待估参数对应 10 个以上样本"
+      ],
+      "inputs": "多指标观测数据",
+      "outputs": "拟合指标、标准化路径系数、中介效应 Bootstrap 区间",
+      "report": "报告 χ²/df、CFI、TLI、RMSEA、SRMR、标准化路径系数与 Bootstrap 区间；模型修正须说明理论理由",
+      "pitfalls": "样本不足；模型修改无理论依据；把拟合良好当因果；未报告完整拟合指标",
+      "software": [
+        "AMOS",
+        "Mplus",
+        "R(lavaan)",
+        "Python(semopy)"
+      ],
+      "formula": "x=Λxξ+δ；η=Bη+Γξ+ζ；RMSEA=√{max[(χ²−df)/(df(N−1)),0]}",
+      "undergrad_fit": 2,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "回归 + Bootstrap 中介检验"
+    },
+    {
+      "id": "lda",
+      "name": "LDA 主题模型",
+      "en": "Latent Dirichlet Allocation",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "文本分析",
+      "purposes": [
+        "text",
+        "topic"
+      ],
+      "question_types": [
+        "主题发现",
+        "评论主题",
+        "舆情分析"
+      ],
+      "dep_type": [
+        "text"
+      ],
+      "indep_type": [],
+      "min_sample": 500,
+      "assumptions": [
+        "语料规模足够（数百至数千条以上）",
+        "主题数确定有依据",
+        "固定随机种子",
+        "主题需人工命名"
+      ],
+      "inputs": "分词后的文本语料",
+      "outputs": "主题—词分布、文档—主题分布",
+      "report": "说明主题数确定依据（困惑度/一致性）、主题命名、随机种子与语料规模",
+      "pitfalls": "短文本效果差；主题数随意；未人工命名；正负语料混合建模",
+      "software": [
+        "Python(gensim)",
+        "R(topicmodels)"
+      ],
+      "formula": "p(w|d)=Σ_z p(w|z)p(z|d)；PP(W)=exp{−Σln p(w_i)/N}",
+      "undergrad_fit": 2,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "TF-IDF + 人工编码"
+    },
+    {
+      "id": "elastic_net",
+      "name": "弹性网络回归",
+      "en": "Elastic Net Regression",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "正则化回归",
+      "purposes": [
+        "driver",
+        "variable_selection",
+        "high_dimensional"
+      ],
+      "question_types": [
+        "高维变量筛选",
+        "共线性处理",
+        "预测"
+      ],
+      "dep_type": [
+        "continuous",
+        "binary"
+      ],
+      "indep_type": [
+        "continuous",
+        "categorical"
+      ],
+      "min_sample": 200,
+      "assumptions": [
+        "变量已标准化",
+        "λ 与 α 由交叉验证确定",
+        "训练/测试集划分",
+        "因变量类型与模型匹配"
+      ],
+      "inputs": "标准化特征矩阵与标签",
+      "outputs": "稀疏系数、最优 λ、L1 比例、交叉验证得分",
+      "report": "报告 α、λ、交叉验证结果；说明标准化与变量筛选过程",
+      "pitfalls": "未标准化；把系数为 0 当因素无关；未划分测试集；二分类仍用连续型损失",
+      "software": [
+        "Python(scikit-learn)",
+        "R(glmnet)"
+      ],
+      "formula": "β̂=argmin{||y−Xβ||²+λ[αΣ|β_j|+(1−α)/2Σβ_j²]}",
+      "undergrad_fit": 2,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "线性回归 / 岭回归"
+    },
+    {
+      "id": "lightgbm",
+      "name": "LightGBM 梯度提升",
+      "en": "LightGBM Gradient Boosting",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "机器学习",
+      "purposes": [
+        "prediction",
+        "feature_importance"
+      ],
+      "question_types": [
+        "高精度预测",
+        "变量筛选",
+        "分类"
+      ],
+      "dep_type": [
+        "binary",
+        "continuous",
+        "multiclass"
+      ],
+      "indep_type": [
+        "continuous",
+        "categorical"
+      ],
+      "min_sample": 500,
+      "assumptions": [
+        "训练/测试集划分",
+        "参数调优合理",
+        "固定随机种子",
+        "防止过拟合"
+      ],
+      "inputs": "特征矩阵与标签",
+      "outputs": "预测值、增益型特征重要性、AUC/准确率",
+      "report": "报告数据划分、关键参数、测试集指标与特征重要性；说明早停策略",
+      "pitfalls": "小样本过拟合；未调参；数据泄漏；把特征重要性当因果",
+      "software": [
+        "Python(lightgbm)",
+        "R(lightgbm)"
+      ],
+      "formula": "F_m(x)=F_{m−1}(x)+ν·h_m(x)；Gain(j)=Σ_tΔI(j,t)",
+      "undergrad_fit": 2,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "随机森林 / 弹性网络"
+    },
+    {
+      "id": "bayesian_network",
+      "name": "贝叶斯网络",
+      "en": "Bayesian Network",
+      "level": "高阶",
+      "chapter": 3,
+      "category": "概率图模型",
+      "purposes": [
+        "dependency",
+        "probabilistic_reasoning"
+      ],
+      "question_types": [
+        "依赖路径",
+        "组合策略",
+        "后验概率"
+      ],
+      "dep_type": [
+        "categorical",
+        "discrete"
+      ],
+      "indep_type": [
+        "categorical",
+        "discrete"
+      ],
+      "min_sample": 300,
+      "assumptions": [
+        "变量已离散化",
+        "变量数控制在 5—10 个",
+        "各状态组合样本充足",
+        "有向无环图有理论依据"
+      ],
+      "inputs": "离散化后的变量数据",
+      "outputs": "网络结构、条件概率表、后验概率",
+      "report": "说明离散化规则、结构学习依据、参数估计方法与后验推断结果",
+      "pitfalls": "变量过多；状态组合稀疏；把统计依赖当因果；离散化阈值随意",
+      "software": [
+        "Python(pgmpy)",
+        "R(bnlearn)"
+      ],
+      "formula": "P(X_1,…,X_n)=ΠP(X_i|Pa(X_i))；P(Q|E)=P(Q,E)/P(E)",
+      "undergrad_fit": 1,
+      "tags": [
+        "可选"
+      ],
+      "fallback": "Logistic 回归 / 决策树"
+    }
+  ]
+}
