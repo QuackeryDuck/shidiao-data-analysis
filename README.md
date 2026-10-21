@@ -78,19 +78,18 @@ shidiao-data-analysis/
 │       ├── test_knowledge.py     # 问题类型、模型推荐、样本门槛
 │       └── test_pipeline.py      # 示例输入 → 完整 Markdown
 ├── SKILL/
-│   └── data-requirement/         # 数据需求生成 skill
-│       ├── SKILL.md              # 触发条件、工作流、质量门槛
-│       ├── references/
-│       │   ├── input_format.md   # 输入字段、别名、构念表、排错
-│       │   ├── output_spec.md    # 输出章节、格式、六项核心产出
-│       │   ├── model_selection_guide.md  # 35 个模型的适用条件与备选
-│       │   └── quality_checklist.md      # 交付前逐项检查
-│       ├── scripts/
-│       │   └── run_engine.py     # 跨目录定位项目根并调用引擎
-│       ├── assets/
-│       │   └── research_brief.template.md
+│   ├── data-requirement/         # 数据需求生成 skill（轻量版）
+│   │   ├── SKILL.md              # 触发条件、工作流、质量门槛
+│   │   ├── references/
+│   │   │   └── quick_reference.md # 输入、输出、模型与复核速查
+│   │   ├── scripts/
+│   │   │   └── run_engine.py     # 跨目录定位项目根并调用引擎
+│   │   └── evals/
+│   │       └── evals.json        # 真实场景测试提示
+│   └── model-match/              # 独立的模型匹配 skill
+│       ├── SKILL.md              # 交互流程、匹配表、输出格式
 │       └── evals/
-│           └── evals.json        # 真实场景测试提示
+│           └── evals.json        # 典型变量组合测试提示
 ├── doc/
 │   ├── input/                    # 输入文档
 │   │   ├── README.md             # 输入格式说明
@@ -196,24 +195,47 @@ py -m engine.cli models --level 基础
 
 ---
 
-## 6. 使用 skill
+## 6. 使用 skills
 
-`SKILL/data-requirement/` 是给 Claude 使用的工作流封装。触发后，它会：
+项目包含两个相互独立的 skill：
+
+| skill | 用途 | 输入 | 输出 |
+| --- | --- | --- | --- |
+| `data-requirement` | 生成完整数据需求文档 | research brief / JSON | `doc/output/` 下的 Markdown |
+| `model-match` | 只做模型匹配 | 用户文档或提示词中的 DV/IV 定义 | 对话中的一级/二级推荐，默认 10 行左右 |
+
+### 6.1 data-requirement（轻量版）
+
+触发后，它会：
 
 1. 定位项目根目录（当前目录向上查找，或读取 `DATA_REQUIREMENT_PROJECT_ROOT`）。
-2. 读取并校验输入，缺关键信息时先列出待确认项。
+2. 读取并校验输入，缺关键信息时用默认值生成并列入待确认项。
 3. 调用 `engine` 生成基线文档。
-4. 按质量清单复核并补写引擎不擅长的部分（理论依据、行业语境、学校/团队约束）。
+4. 按六项要求复核并补写理论依据、行业语境与团队约束。
 5. 报告输出路径、关键假设和仍需人工确认的事项。
-
-skill 不会替代人工判断：它负责把“该考虑什么”铺全，最终变量取舍、模型选择与结论解释仍由研究团队负责。
 
 ```powershell
 # 可直接运行 skill 附带的入口脚本
 py SKILL/data-requirement/scripts/run_engine.py --input doc/input/research_brief.md
 ```
 
-详见 [SKILL/data-requirement/SKILL.md](SKILL/data-requirement/SKILL.md)。
+详见 [SKILL/data-requirement/SKILL.md](SKILL/data-requirement/SKILL.md) 与 [quick_reference.md](SKILL/data-requirement/references/quick_reference.md)。
+
+### 6.2 model-match
+
+独立、无脚本、无第三方依赖。用户给出因变量和自变量的定义后，它只追问会影响模型选择的信息（Y 的测量层级、研究目的、样本量、分组/重复测量），然后输出：
+
+```text
+一级推荐：多元线性回归
+理由：Y 为连续变量，有多个自变量，目的是分析影响因素
+二级推荐：描述性统计 + 相关分析
+备选/降级：残差不满足时用稳健标准误；样本不足时先做相关与分组比较
+需确认：Y 是否按连续处理？有效样本是否≥100？
+```
+
+它不生成数据需求文档，也不调用 `engine/`；需要完整方案时再用 `data-requirement`。详见 [SKILL/model-match/SKILL.md](SKILL/model-match/SKILL.md)。
+
+skill 不会替代人工判断：它负责把“该考虑什么”铺全，最终变量取舍、模型选择与结论解释仍由研究团队负责。
 
 ---
 
@@ -237,7 +259,8 @@ py -m unittest discover -s engine/tests -v
 | 增加构念关键词或理论映射 | `engine/data/construct_keywords.json` |
 | 修改文档章节或表格 | `engine/render.py` |
 | 增加输入字段/章节别名 | `engine/brief.py` |
-| 修改 skill 行为 | `SKILL/data-requirement/SKILL.md` 与 `references/` |
+| 修改数据需求 skill | `SKILL/data-requirement/SKILL.md` 与 `references/quick_reference.md` |
+| 修改模型匹配逻辑 | `SKILL/model-match/SKILL.md` 的匹配表与判断规则 |
 
 修改知识库后建议重新生成示例并运行测试，确认没有破坏现有输出。
 
