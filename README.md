@@ -88,6 +88,8 @@ shidiao-data-analysis/
 │   │       └── evals.json        # 真实场景测试提示
 │   └── model-match/              # 独立的模型匹配 skill
 │       ├── SKILL.md              # 交互流程、匹配表、输出格式
+│       ├── reference/
+│       │   └── models.md         # 35 个手册模型 + 36 个补充方法
 │       └── evals/
 │           └── evals.json        # 典型变量组合测试提示
 ├── doc/
@@ -223,17 +225,17 @@ py SKILL/data-requirement/scripts/run_engine.py --input doc/input/research_brief
 
 ### 6.2 model-match
 
-独立、无脚本、无第三方依赖。用户给出因变量和自变量的定义后，它只追问会影响模型选择的信息（Y 的测量层级、研究目的、样本量、分组/重复测量），然后输出：
+独立、无脚本、无第三方依赖。用户给出因变量和自变量的定义后，它只追问会影响模型选择的信息（Y 的测量层级、研究目的、样本量、分组/重复测量），然后从 [模型目录](SKILL/model-match/reference/models.md) 中选择并输出：
 
 ```text
-一级推荐：多元线性回归
+一级推荐：A07 多元线性回归
 理由：Y 为连续变量，有多个自变量，目的是分析影响因素
-二级推荐：描述性统计 + 相关分析
+二级推荐：B01 描述性统计 + S07 相关分析
 备选/降级：残差不满足时用稳健标准误；样本不足时先做相关与分组比较
 需确认：Y 是否按连续处理？有效样本是否≥100？
 ```
 
-它不生成数据需求文档，也不调用 `engine/`；需要完整方案时再用 `data-requirement`。详见 [SKILL/model-match/SKILL.md](SKILL/model-match/SKILL.md)。
+模型目录包含学习手册中的 35 个模型，并补充了 t 检验、协方差分析、非参数检验、有序/多项 Logistic、中介/调节、多水平模型、联合分析、Kano、PSM、对应分析、LCA、PLS-SEM、决策树、时间序列、生存分析、TOPSIS、内容分析等常用方法。它不生成数据需求文档，也不调用 `engine/`；需要完整方案时再用 `data-requirement`。详见 [SKILL/model-match/SKILL.md](SKILL/model-match/SKILL.md)。
 
 skill 不会替代人工判断：它负责把“该考虑什么”铺全，最终变量取舍、模型选择与结论解释仍由研究团队负责。
 
